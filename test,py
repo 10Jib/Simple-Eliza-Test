@@ -1,0 +1,27 @@
+import unittest
+
+from eliza import *
+
+
+class basic_test(unittest.TestCase):
+
+    def test_inputIsValid(self):
+        self.assertEqual(inputIsValid("this is invalid"), False, "input is not valid")
+        self.assertEqual(inputIsValid("this is valid."), True, "input is valid")
+
+    def test_findRules(self):
+        self.assertEqual(findRules("This should test.", ruleSet={"test": ['test']}), ['test'], "findRules could not find rule in string")
+        # This type of test may fail if it compares the lists incorrectly
+
+
+         
+class integration_test(unittest.TestCase):
+
+    def test_processResponse(self):
+        self.assertEqual(processResponse("I want it to work."), "What if you never got it to work?" ,"Inncorrect response")
+    
+
+    
+
+if __name__ == '__main__':
+    unittest.main()
